@@ -1,9 +1,9 @@
 ﻿; Visual Char/Block/Line
 #If WinActive("ahk_group " . Vim.GroupName) and (Vim.State.Mode == "Vim_Normal")
 v::Vim.State.SetMode("Vim_VisualChar")
-^v::
-  Send, ^b
-  Vim.State.SetMode("Vim_VisualChar")
+;^v::
+;  Send, ^b
+;  Vim.State.SetMode("Vim_VisualChar")
 Return
 
 +v::

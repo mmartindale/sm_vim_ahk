@@ -1,4 +1,6 @@
-# vim_ahk
+# sm_vim_ahk
+
+Fork of [vim_ahk](https://github.com/rcmdnk/vim_ahk) for using vim shortcuts in SuperMemo :)
 
 Setting file/exe file of AutoHotkey for Vim emulation.
 

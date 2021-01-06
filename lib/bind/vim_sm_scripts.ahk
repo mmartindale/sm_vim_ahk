@@ -83,8 +83,6 @@ Tab & d::
   Send, {Enter}
 Return
 
-
-
 ;window notes
 ; TBrowser - Browser
 ; TContents - Content Window (Knowledge Tree)

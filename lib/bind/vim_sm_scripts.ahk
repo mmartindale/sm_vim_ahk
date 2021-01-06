@@ -29,3 +29,28 @@ CutAndParseHtml(){
   Send {Esc}
   Clipboard := bak
 }
+
+; SetPriority
+; Description: Opens the priority window and sets priority percentage to a number between Min and Max
+; Parameters
+;   Min: number. Minimum percentage. Expects 0 - 100. Can be float.
+;   Max: number. Maximum percentage. Expects 0 - 100. Can be float.
+;
+SetPriority(Min, Max){
+  Send, !p
+  Random, rand, Min, Max
+  Send, %rand%
+}
+
+; priorities with Tab + QWERTY
+Tab & q::SetPriority(0,5.20)
+
+Tab & w::SetPriority(5.21,15.34)
+
+Tab & e::SetPriority(15.35,31.20)
+
+Tab & r::SetPriority(31.21, 55.62)
+
+Tab & t::SetPriority(55.63, 75.23)
+
+Tab & y::SetPriority(75.24, 100)

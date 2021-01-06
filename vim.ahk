@@ -1,6 +1,8 @@
 ﻿; Auto-execute section
 VimScriptPath := A_LineFile
 VimGroup := "ahk_exe sm18.exe"
+VimSendEscNormal := "1"
+
 Vim := new VimAhk()
 Return
 

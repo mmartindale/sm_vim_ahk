@@ -6,10 +6,11 @@ i::Vim.State.SetMode("Insert")
   Vim.State.SetMode("Insert")
 Return
 
-a::
-  Send, {Right}
-  Vim.State.SetMode("Insert")
-Return
+; conflicts with "a" go to answer field
+; a::
+;   Send, {Right}
+;   Vim.State.SetMode("Insert")
+; Return
 
 +a::
   Send, {End}

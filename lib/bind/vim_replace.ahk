@@ -1,6 +1,6 @@
 ﻿#If WinActive("ahk_group " . Vim.GroupName) and (Vim.State.Mode == "Vim_Normal")
 r::Vim.State.SetMode("r_once")
-+r::Vim.State.SetMode("r_repeat")
+; +r::Vim.State.SetMode("r_repeat")
 
 #If WinActive("ahk_group " . Vim.GroupName) and (Vim.State.Mode == "r_once")
 ~a::

@@ -74,3 +74,29 @@ Return
   Vim.State.SetMode("Vim_Normal")
 Return
 ; }}} Vim visual mode
+
+x::
+  Send, !x
+  Vim.State.SetNormal()
+Return
+
+z::
+  Send, !z
+  Vim.State.SetNormal()
+Return
+
+n::CutAndParseHtml()
+
+m::
+  CutAndParseHtml()
+  Send, a
+  Send, ^v
+Return
+
+s::
+  Send, ^{F3}
+Return
+
+f::Commander("Remove formatting: Selection")
+
+h::Commander("Highlighter font")

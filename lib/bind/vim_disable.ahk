@@ -70,7 +70,6 @@ Space::
 Return
 
 #If WinActive("ahk_group " . Vim.GroupName) and Vim.State.StrIsInCurrentVimMode("Vim_") and (Vim.Conf["VimDisableUnused"]["val"] == 2)
-a::
 b::
 c::
 d::
@@ -86,7 +85,6 @@ m::
 n::
 o::
 p::
-q::
 r::
 s::
 t::

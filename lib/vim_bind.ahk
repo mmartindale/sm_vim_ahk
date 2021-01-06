@@ -10,7 +10,6 @@
 #Include %A_LineFile%\..\bind\vim_search.ahk
 #Include %A_LineFile%\..\bind\vim_command.ahk
 #Include %A_LineFile%\..\bind\vim_disable.ahk
-#Include %A_LineFile%\..\bind\vim_sm_enable.ahk
 #Include %A_LineFile%\..\bind\vim_sm_scripts.ahk
 
 ; Reset the condition

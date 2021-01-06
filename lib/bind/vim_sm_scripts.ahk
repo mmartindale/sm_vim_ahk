@@ -1,5 +1,5 @@
+#If WinActive("ahk_group " . Vim.GroupName)
 ;Functions
-
 ; Commander
 ; Description: Opens Supermemo Commander Window and searches for "Command" then performs selected command
 ; Parameters
@@ -42,7 +42,11 @@ SetPriority(Min, Max){
   Send, %rand%
 }
 
+; ---------------------
 ; priorities with Tab + QWERTY
+; Q  urgent
+; we applicable 
+; rty interested/explore
 Tab & q::SetPriority(0,5.20)
 
 Tab & w::SetPriority(5.21,15.34)
@@ -54,3 +58,36 @@ Tab & r::SetPriority(31.21, 55.62)
 Tab & t::SetPriority(55.63, 75.23)
 
 Tab & y::SetPriority(75.24, 100)
+
+; ---------------------
+;COMMANDER SHORTCUTS
+;Split article
+Tab & s::Commander("Split")
+
+;Clear search highlights
+Tab & l::Commander("Highlight: Clear")
+
+; ---------------------
+;Misc
+
+;Go to html file of current element in editor
+Tab & h::
+  Send, ^{F9}
+Return
+
+;Cut drills
+Tab & d::
+  Send, {Alt}
+  Send, l
+  Send, c
+  Send, {Enter}
+Return
+
+
+
+;window notes
+; TBrowser - Browser
+; TContents - Content Window (Knowledge Tree)
+; TElWind - Element window
+; TElDATAWind - Element Data window
+; TSMMain - Toolbar

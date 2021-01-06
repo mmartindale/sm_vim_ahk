@@ -6,8 +6,7 @@ You can change various configurations by adding them in the file vim.ahk before 
 
 See the readme of the original repo for additional installation and configuration information.
 
-# Main Modes
-
+## Main Modes
 
 |Mode|Description|
 |:---|:----------|
@@ -24,11 +23,13 @@ As command mode was only used for saving and quitting, it has been disabled.
 
 Finally, a separate file, `/bind/vm_sm_scripts.ahk` has been added for other common shortcuts that other ahk scripts have for SM, such as setting priorities, concept hooks, etc. Add your scripts to this file. Since these do not interfere with the text editing process, SM_Vim allows them in all modes.
 
-#Option Changes
-`VimEscNormal = 0` , ESC will not go to Normal Mode! 
+## Option Changes
+
+`VimEscNormal = 0` , ESC will not go to Normal Mode!
 `VimJJ = 1` , typing `jj` in Insert Mode will return to Normal Mode.
 
-##Disabled Keys
+### Disabled Keys
+
 For SM_Vim, the `VimDisableUnused` Configuration is set to 2 by default, these means a-z (+Shift), numbers and symbols have been disabled while not in insert mode. However, the following shortcuts have been enabled:
 a: Edit First Answer
 q: Edit First Question
@@ -39,10 +40,11 @@ You can enable more shortcuts as needed by removing the line blocking them in th
 
 Alternatively, you can change the configuration setting `VimDisableUnused` to 1 in the `vim.ahk` file. This stops `vim_ahk` from disabling any keys while not in insert mode.
 
-#Command Changes
+## Command Changes
+
 Below is a summary of the changes in shortcuts compared to the original vim_ahk. New commands/functions are **bolded** and removed/disabled commands are in ~~strikethrough~~
 
-##Insert Mode
+### Insert Mode
 
 |Key/Commands|Function|
 |:----------:|:-------|
@@ -63,8 +65,8 @@ and long press will change the mode to the normal mode.
 
 If using a custom two-letter hotkey to enter the normal mode, the two letters must be different.
 
+### Normal Mode
 
-##Normal Mode
 ### Mode Change
 
 |Key/Commands|Function|
@@ -75,7 +77,8 @@ If using a custom two-letter hotkey to enter the normal mode, the two letters mu
 |v/V|Enter the visual mode of Character-wise/Line-wise/Block-wise.|
 |~~:~~|Command line mode is disabled|
 
-###Move
+### Move
+
 |Key/Commands|Function|
 |:----------:|:-------|
 |h/j/k/l|Left/Down/Up/Right.|
@@ -110,6 +113,7 @@ In addition, `Repeat` is also available for some commands.
 |p/P| Paste to the next/current place. If copy/cut was done with the line-wise visual mode, it pastes to the next/current line. Some commands (such yy/dd) also force to paste as line-wise.|
 
 y/d/c+Move Command can be used, too.
+
 * e.g.) `yw` -> copy next one word.
 * e.g.) `d3w` -> delete next 3 words.
 
@@ -130,8 +134,7 @@ y/d/c+Move Command can be used, too.
 
 TODO *R* -- NEW -- (R)eturn from the Knowledge tree, focus on main window 
 
-
-## Visual Mode
+### Visual Mode
 
 |Key/Commands|Function|
 |:----------:|:-------|
@@ -149,13 +152,15 @@ TODO *R* -- NEW -- (R)eturn from the Knowledge tree, focus on main window
 |**f**| Format selection as plain html|
 |**h**| Highlight selected text|
 
-## Command Mode
+### Command Mode
+
 All commands are disabled
 
-## New Script shortcuts (Any Mode)
+### New Script shortcuts (Any Mode)
+
 |Key/Commands|Function|
 |:----------:|:-------|
-|Tab + Q/W/E/R/T/Y | Assign priority to current element. Feel free to change ranges. Currently Q is urgent (0-5), WE applicable but less urgent (5-30), RTY used for interests and exploration (30-100) 
+|Tab + Q/W/E/R/T/Y | Assign priority to current element. Feel free to change ranges. Currently Q is urgent (0-5), WE applicable but less urgent (5-30), RTY used for interests and exploration (30-100)
 |Tab + D| Cut drills|
 |Tab + H| Open element in html editor (Ctrl + F9)|
 |Tab + L| Clear Search Highlights|

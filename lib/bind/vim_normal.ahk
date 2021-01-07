@@ -21,18 +21,18 @@ u::Send,^z
   Clipboard := bak
 Return
 
-+z::Vim.State.SetMode("Z")
-#If WinActive("ahk_group " . Vim.GroupName) and (Vim.State.Mode == "Z")
-+z::
-  Send, ^s
-  Send, !{F4}
-  Vim.State.SetMode("Vim_Normal")
-Return
+;+z::Vim.State.SetMode("Z")
+;#If WinActive("ahk_group " . Vim.GroupName) and (Vim.State.Mode == "Z")
+;+z::
+;  Send, ^s
+;  Send, !{F4}
+;  Vim.State.SetMode("Vim_Normal")
+;Return
 
-+q::
-  Send, !{F4}
-  Vim.State.SetMode("Vim_Normal")
-Return
+;+q::
+;  Send, !{F4}
+;  Vim.State.SetMode("Vim_Normal")
+;Return
 
 #If WinActive("ahk_group " . Vim.GroupName) and (Vim.State.Mode == "Vim_Normal")
 Space::Send, {Right}

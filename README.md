@@ -1,206 +1,58 @@
-# vim_ahk
+# sm_vim_ahk
 
-Setting file/exe file of AutoHotkey for Vim emulation.
+Fork of [vim_ahk](https://github.com/rcmdnk/vim_ahk) for using vim shortcuts in SuperMemo :). To use just run the script with ahk.
 
-vim.ahk is the setting file for [AutoHotkey](http://www.autohotkey.com/)(Autohotkey_L).
+You can change various configurations by adding them in the file vim.ahk before the line that creates the Vim() instance, `vim := new VimAhk()`.
 
-vim.exe is a standalone application made from vim.ahk (available in [the releases page](https://github.com/rcmdnk/vim_ahk/releases)).
-
-This is vim emulation for Windows.
-If you are interesting in same settings for Mac,
-try Vim emulation for [Karabiner - Software for macOS](https://pqrs.org/osx/karabiner/): [Karabiner-Elements complex_modifications rules by rcmdnk](https://rcmdnk.com/KE-complex_modifications/).
-
-## Installation
-
-### Scripts
-
-If you've already installed AutoHotKey, just open vim.ahk with AutoHotkey.
-
-If you are running AutoHotKey with another script,
-you can include it in your script using AutoHotKey...
-Please copy vim.ahk and lib directory in `\Users\%username%\Documents`
-or where the script is in,
-and add the following line in AutoHotkey.ahk or your script:
-
-    #Include  %A_LineFile%\..\vim.ahk
-
-at the end of the <a href="http://www.autohotkey.com/docs/Scripts.htm#auto">Auto-execute section</a>.
-
-### Executable
-
-You can also use **vim_ahk.exe**, which can work standalone w/o AutoHotKey.
-
-To get executable, go to [the releases page](https://github.com/rcmdnk/vim_ahk/releases)
-and download the latest zip file.
-
-Unzip the zip file, and place the extracted vim_ahk folder where you like,
-then launch **vim_ahk.exe**.
-
-:memo: place **vim_ahk_icons** folder in the same folder with **vim_ahk.exe**,
-otherwise the tray menu icon feature does not work.
-
-### Build executable from the source
-
-Clone vim_ahk and go vim_ahk folder, and run **build.bat**.
-
-* Double click the file
-* Or run `.\build.bat` on PowerShell or Command Prompt.
-
-You will find **vim_ahk** folder which contains **vim_ahk.exe** and **vim_ahk_icons**.
-
-## Applications (VimGroup)
-The default setting enables vim-mode for the following applications:
-
-* Notepad (メモ帳)
-* Wordpad
-* TeraPad
-* Windows Explorer
-* Thunderbird (only sending window)
-* Microsoft PowerPoint
-* Microsoft Word
-* Evernote
-* Visual Studio Code
-* OneNote
-* TexWork
-* TexStudio
-
-You can change them from the right click menu of task tray icon
-(find `VimMenu`-`Settings` in the list),
-or launch the setting window by `Ctrl-Alt-Shift-v`.
-
-If you want to change applications directly in the script, add `VimGroup`
-variable before `Vim := new VimAhk()` in vim.ahk
-(Window title/class can be checked by Window spy of AutoHotkey),
-or write before including vim.ahk
-
-Example line:
-
-    VimGroup := "ahk_exe chrome.exe,ahk_exe firefox.exe"
-
-Multiple applications can be written by comma separated.
-
-Note: This will overwrite the default applications. If you want to **add**
-these applications to the default applications, add following applications
-after your applications:
-
-    ahk_exe notepad.exe,ahk_exe explorer.exe,ahk_exe wordpad.exe,ahk_exe TeraPad.exe,作成,Write:,ahk_exe POWERPNT.exe,ahk_exe WINWORD.exe,ahk_exe Evernote.exe,ahk_exe Code.exe,ahk_exe onenote.exe,OneNote,ahk_exe texworks.exe,ahk_exe texstudio.exe
-
-Or you can use GUI option setting menu described below.
-
-The default setting of `VimSetTitleMatchMode` is 2,
-which makes matching methods as `Contain`.
-
-If you set `OneNote`, all windows with a title containing `OneNote`
-(e.g. `XXX's OneNote`) will be included.
-If you set `VimSetTitleMatchMode` as 3, only exact title of `OneNote` will be included.
-
-Note: It may not work on OneNote. OneNote may has window name like
-**User's Notebook - OneNote**, instead of **OneNote**.
-
-In that case, you need to check OneNote's window title with Window spy.
-
-Window spy will give you about Window Title, Class and Process like:
-
-    User's Notebook - OneNote
-    ahk_class ApplicationFrameWindow
-    ahk_exe ApplicationFrameHost.exe
-
-If you add any of above lines to VimGroup, vim_ahk works on OneNote.
-But if you set `ahk_class ApplicationFrameWindow` or `ahk_exe ApplicationFrameHost.exe`,
-vim_ahk also works on other applications which use these Class/Process name
-(most of applications installed from Microsoft Store).
-
-Examples of applications:
-
-* Chrome: `ahk_exe chrome.exe`
-* Firefox: `ahk_exe firefox.exe`
-* Excel: `ahk_exe EXCEL.EXE`
-* LibreOffice: `ahk_exe soffice.bin` (for all LibreOffice applications)
-
-## Options
-
-In addition to `VimGroup`,
-there are following options which you can set in your script.
-All of these can be changed from setting menu, too.
-
-|Option|Description|Default|
-|:-----|:----------|:------|
-|VimEscNormal|If 1, short press ESC sets the normal mode, while long press ESC sends ESC.|1|
-|VimSendEscNormal|If 1, short press ESC send ESC in the normal mode.|0|
-|VimLongEscNormal|If 1, short press and long press of ESC behaviors are swapped.|0|
-|VimCtrlBracketToEsc|If 1, Ctrl-[ behaves as ESC.<br>If VimCtrlBracketNormal is 0, Ctrl-[ sends ESC.<br>If VimCtrlBracketNormal is 1, long press Ctrl-[ sends ESC.|0|
-|VimCtrlBracketNormal|If 1, pushing Ctrl-[ sets the normal mode, while long press Ctrl-[ sends Ctrl-[.|1|
-|VimSendCtrlBracketNormal|If 1, short press Ctrl-[ send Ctrl-[ in the normal mode.|0|
-|VimLongCtrlBracketNormal|If 1, short press and long press of Ctrl-[ behaviors are swapped.|0|
-|VimRestoreIME|If 1, IME status is restored at entering the insert mode.|1|
-|VimJJ|If 1, `jj` changes the mode to the normal mode from the insert mode.|0|
-|VimTwoLetterEsc|A list of character pairs to press together during the insert mode to get to the Normal mode.<br>For example, a value of `jf` means pressing `j` and `f` at the same time will enter the Normal mode.<br>Multiple combination can be set by separated by `,`. (e.g. `jf,jk,sd`)||
-|VimDisableUnused|Disable level of unused keys in other than the insert mode:<br><ol><li>Do not disable unused keys</li><li>Disable alphabets (+shift) and symbols</li><li>Disable all including keys with modifiers (e.g. Ctrl+Z)</li></ol>|3|
-|VimSetTitleMatchMode|SetTitleMatchMode:<br><ol><li>Start with</li><li><li>Contain</li><li>Exact match</li>|2|
-|VimSetTitleMatchModeFS|SetTitleMatchMode:<br><ol><li>Fast: Text is not detected for such edit control.</li><li>Slow: Works for all windows, but slow.</li>|Fast|
-|VimIconCheckInterval|Interval to check vim_ahk status (ms) and change tray icon (see below picture).<br>If it is set to 0, the original AHK icon is set and not changed.|1000|
-|VimVerbose|Verbose level:<br><ol><li>Nothing.</li><li>Minimum tooltip (mode information only).</li><li>ToolTip (all information).</li><li>Debug mode with a message box, which doesn't disappear automatically.</li></ol>|1|
-|VimGroup|Applications on witch vim_ahk is enabled.|See **Applications** section|
-
-You can add your options before including **vim.ahk** in your script
-in the auto execute section like:
-
-    VimVerbose := 2
-    #Include \path\to\\vim.ahk
-
-If you want to change them directly in the vim.ahk script,
-add these variable before `Vim := new VimAhk()`.
-
-![trayicon](https://raw.githubusercontent.com/rcmdnk/vim_ahk/master/pictures/trayicon.gif "trayicon")
-
-## GUI Option Setting Window
-
-You can change these options from the right click menu of task tray icon
-(find `VimMenu`-`Settings` in the list),
-or launch the setting window by `Ctrl-Alt-Shift-v`.
-
-![traymenu](https://raw.githubusercontent.com/rcmdnk/vim_ahk/master/pictures/traymenu.jpg "traymenu")
-
-![settings](https://raw.githubusercontent.com/rcmdnk/vim_ahk/master/pictures/settings.jpg "settings")
-
-Here, you can add applications, change the mode change key,
-or change the verbose level.
-
-If you push `Reset`, default settings will be shown in the window.
-These settings will be enabled only if you push `OK` button.
-
-These **default settings** are overwritten by
-your `VimXXX` options in your script described above.
-(i.e. `Reset` will restore your options in the script in addition to
-the default settings of vim_ahk.)
+See the readme of the original repo for additional installation and configuration information.
 
 ## Main Modes
 
-Here are the main modes.
-
 |Mode|Description|
 |:---|:----------|
-|Insert mode|Original Windows state|
-|Normal mode|As in vim, a cursor is moved by hjkl, w, etc... and some vim like commands are available.|
-|Visual mode|There are three visual modes: Character-wise, Line-wise, and Block-wise. Block-wise visual mode is valid only for applications which support block-wise selection (such TeraPad).|
-|Command mode|Can be used for saving file/quitting.|
+|Insert mode|Original Windows state - Same as original|
+|Normal mode|Vim movement commands can be used to navigate through text inside of elements, and sometimes in the knowledge tree|
+|Visual mode|Visual block mode has been disabled as it is not supported. Use visual mode to select text before making cloze, extract, etc|
+|Command mode|Disabled|
 
-The initial state is the insert mode, then `ESC` or `Ctrl-[` brings you to the normal mode.
+SM_Vim tries to minimize the use of the mouse while staying true to a lot of vim navigation. The goal is not to recreate vim in SM but to allow for text selection and navigation, repetitions etc with the keyboard alone.
 
-In the normal mode, `i` is the key to be back to the insert mode.
+Batch processing and folder operations etc will still need to be performed with mouse or traditional scripts. [MasterHowToLearn's fork](https://github.com/MasterHowToLearn/SuperMemoVim) was referenced but changes are a lot more minimal.
 
-`v`, `V` and `Ctrl-v` are the key to
-the Character-wise, the Line-wise, and the Block-wise
-visual mode, respectively.
+As command mode was only used for saving and quitting, it has been disabled.
 
-After pressing `:`, a few commands to save/quit are available.
+Finally, a separate file, `/bind/vm_sm_scripts.ahk` has been added for other common shortcuts that other ahk scripts have for SM, such as setting priorities, concept hooks, etc. Add your scripts to this file. Since these do not interfere with the text editing process, SM_Vim allows them in all modes.
 
-## Available commands in the insert mode
+## Option Changes
+
+`VimEscNormal = 0` , ESC will not go to Normal Mode!
+
+`VimJJ = 1` , typing `jj` in Insert Mode will return to Normal Mode.
+
+### Disabled Keys
+
+For SM_Vim, the `VimDisableUnused` Configuration is set to 2 by default, these means a-z (+Shift), numbers and symbols have been disabled while not in insert mode. However, the following shortcuts have been enabled:
+
+* a: Edit First Answer
+* q: Edit First Question
+
+e: Edit texts stays **disabled** by default. You can re-enable normal mode a functionality, and disable a and q SM functionality if preferred.
+
+You can enable more shortcuts as needed by removing the line blocking them in the file `/bind/vim_disable.ahk` (using level 2)
+
+Alternatively, you can change the configuration setting `VimDisableUnused` to 1 in the `vim.ahk` file. This stops `vim_ahk` from disabling any keys while not in insert mode.
+
+## Command Changes
+
+Below is a summary of the changes in shortcuts compared to the original vim_ahk. New commands/functions are **bolded** and removed/disabled commands are in ~~strikethrough~~
+
+### Insert Mode
 
 |Key/Commands|Function|
 |:----------:|:-------|
-|ESC/Ctrl-[| Enter the normal mode. Holding (0.5s) these keys emulate normal ESC/Ctrl-[.|
-|jj|Enter the normal mode, if enabled.|
+|~~Esc~~ | Disabled by default |
+|Ctrl-[| Enter the normal mode. Holding (0.5s) these keys emulate normal Ctrl-[.|
+|jj|Enter the normal mode **enabled by default**.|
 |Custom two letters|If two-letter mapping is set.|
 
 ESC/Ctrl-[ switch off IME if IME is on.
@@ -215,25 +67,28 @@ and long press will change the mode to the normal mode.
 
 If using a custom two-letter hotkey to enter the normal mode, the two letters must be different.
 
-## Available commands in the normal mode
+### Normal Mode
 
 ### Mode Change
 
 |Key/Commands|Function|
 |:----------:|:-------|
-|i/I/a/A/o/O| Enter the insert mode at under the cursor/start of the line/next to the cursor/end of the line/next line/previous line.|
-|v/V/Ctrl-v|Enter the visual mode of Character-wise/Line-wise/Block-wise.|
-|:|Enter the command line mode|
+| ~~a~~| a has been disabled as it interferes with existing SM shortcut a: edit first answer.|
+|i/I/A/o/O | The remaining shortcuts should work as usual. Behavior is undefined if the cursor is not showing. Working on a solution where no action is taken unless you are editing an element.|
+|~~Ctrl-v~~| Visual block mode is disabled|
+|v/V|Enter the visual mode of Character-wise/Line-wise/Block-wise.|
+|~~:~~|Command line mode is disabled|
 
 ### Move
 
 |Key/Commands|Function|
 |:----------:|:-------|
 |h/j/k/l|Left/Down/Up/Right.|
+|~~Ctrl + h/j/k/l~~| Disabled as they interfere with SM shortcuts|
 |0/$| To the start/end of the line.|
 |Ctrl-a/Ctrl-e| To the start/end of the line (emacs like).|
 |^| To the starting non-whitespace character of the line.|
-|w/W/e/E| Move a word forward (all work the same way: goes to the beginning of the word).|
+|w/W/e/E| Move a word forward (all work the same way: goes to the beginning of the word). NOTE: e is a shortcut for edit texts but it has not been disabled.|
 |b/B| Move a word backward (b/B:  the beginning of the word).|
 |Ctrl-u/Ctrl-d| Go Up/Down 10 line.|
 |Ctrl-b/Ctrl-f| PageUp/PageDown.|
@@ -260,6 +115,7 @@ In addition, `Repeat` is also available for some commands.
 |p/P| Paste to the next/current place. If copy/cut was done with the line-wise visual mode, it pastes to the next/current line. Some commands (such yy/dd) also force to paste as line-wise.|
 
 y/d/c+Move Command can be used, too.
+
 * e.g.) `yw` -> copy next one word.
 * e.g.) `d3w` -> delete next 3 words.
 
@@ -268,45 +124,48 @@ y/d/c+Move Command can be used, too.
 |Key/Commands|Function|
 |:----------:|:-------|
 |u/Ctrl-r| Undo/Redo.|
-|r/R| Replace one character/multiple characters.|
+|~~R~~| R (replace multiple characters) has been disabled| 
+|r| Replace one character|
 |J| Combine two lines.|
 |.| It is fixed to do: `Replace a following word with a clipboard` (useful to use with a search).|
 |~| Change case.|
-|/| Start search (search box will be opened)|
-|n/N| Search next/previous (Some applications support only next search)|
-|*| Search the word under the cursor.|
-|ZZ/ZQ|Save and Quit/Quit.|
+|/| Start search - Opens Ctrl+F searchbox in supermemo|
+|~~n/N~~| Search next/previous not supported for SM|
+|~~*~~| Disabled. You can perform Ctrl+F3 search on the selected text with Tab + S|
+|~~ZZ/ZQ~~|Like Command mode, this has been disabled|
 
-## Available commands in visual mode
+TODO *R* -- NEW -- (R)eturn from the Knowledge tree, focus on main window 
+
+### Visual Mode
 
 |Key/Commands|Function|
 |:----------:|:-------|
-|ESC/Ctrl-[| Enter the normal mode.|
+|~~Esc~~/Ctrl-[| Enter the normal mode.|
 |Move command| Most of move commands in the normal mode are available.|
-|y/d/x/c| Copy/Cut/Cut/Cut and insert (`d`=`x`)|
-|Y/D/X/C| Move to the end of line, then Copy/Cut/Cut/Cut and the insert mode (`D`=`X`)|
-|*| Search the selected word.|
+| **x** | **Extract the selected text.** Use d to cut text instead|
+| ~~x/X~~ | New functionality of x is extraction like `Alt+x` in SM. Use d to cut text instead.|
+|y/d/c| Copy/Cut/Cut and insert|
+|Y/D/C| Move to the end of line, then Copy/Cut/Cut and the insert mode (`D`=`X`)|
+|~~*~~| ~~Search the selected word.~~ Disabled|
+|**z**| Create a cloze of selected text|
+|**n**| Create a (n)ew cloze in item cards - replaces selected text with cloze [...] and copies text to the clipboard|
+|**m**| Make cloze and paste - same as `n` but also pastes the text into the answer field.|
+|**s**| Search selected word (Ctrl+F3 search)|
+|**f**| Format selection as plain html|
+|**h**| Highlight selected text|
 
-## Available commands in the command mode
+### Command Mode
+
+All commands are disabled
+
+### New Script shortcuts (Any Mode)
 
 |Key/Commands|Function|
 |:----------:|:-------|
-|ESC/Ctrl-[| Enter the the normal mode.|
-|w + RETURN| Save |
-|w + SPACE | Save as |
-|w + q| Save and Quit |
-|q | Quit |
-|h | Open help of the application|
+|Tab + Q/W/E/R/T/Y | Assign priority to current element. Feel free to change ranges. Currently Q is urgent (0-5), WE applicable but less urgent (5-30), RTY used for interests and exploration (30-100)
+|Tab + D| Cut drills|
+|Tab + H| Open element in html editor (Ctrl + F9)|
+|Tab + L| Clear Search Highlights|
+|Tab + S| Split the article|
 
-## References (Japanese)
-
-* [vim_ahkでウィンドウを定期的にチェックしてトレイアイコンを変えられる様にした](https://rcmdnk.com/blog/2017/11/22/computer-autohotkey-vim/)
-* [vim_ahkで有効にするアプリの変更もメニューから出来る様にした](https://rcmdnk.com/blog/2017/11/14/computer-windows-autohotkey/)
-* [vim_ahkでメニューから設定変更出来る様にした](https://rcmdnk.com/blog/2017/11/11/computer-windows-autohotkey/)
-* [AutoHotkeyでToolTipを出す](https://rcmdnk.com/blog/2017/11/10/computer-windows-autohotkey/)
-* [AutoHotkeyで設定ファイルの読み書きをする](https://rcmdnk.com/blog/2017/11/08/computer-windows-autohotkey/)
-* [AutoHotkeyでのGUI操作](https://rcmdnk.com/blog/2017/11/07/computer-windows-autohotkey/)
-* [AutoHotkeyでのメニューの追加](https://rcmdnk.com/blog/2017/11/06/computer-windows-autohotkey/)
-* [AutoHotkeyで短い連続入力を認識させる方法](https://rcmdnk.com/blog/2017/11/05/computer-windows-autohotkey/)
-* [AutoHotkeyで特定の条件下で設定したキー以外全てを無効にする簡単な方法](https://rcmdnk.com/blog/2017/09/03/computer-windows-autohotkey/)
-* [Vim以外でVimする: Windows+AutoHotkey編](https://rcmdnk.com/blog/2013/08/03/computer-windows-autohotkey/)
+Add your own scripts to `/bind/vim_sm_scripts.ahk` to allow them in any mode.

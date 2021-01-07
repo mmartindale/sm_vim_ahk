@@ -7,10 +7,7 @@ h::Vim.Move.Repeat("h")
 j::Vim.Move.Repeat("j")
 k::Vim.Move.Repeat("k")
 l::Vim.Move.Repeat("l")
-^h::Vim.Move.Repeat("h")
-^j::Vim.Move.Repeat("j")
-^k::Vim.Move.Repeat("k")
-^l::Vim.Move.Repeat("l")
+
 ; Home/End
 0::Vim.Move.Move("0")
 $::Vim.Move.Move("$")

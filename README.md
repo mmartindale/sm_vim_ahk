@@ -26,13 +26,15 @@ Finally, a separate file, `/bind/vm_sm_scripts.ahk` has been added for other com
 ## Option Changes
 
 `VimEscNormal = 0` , ESC will not go to Normal Mode!
+
 `VimJJ = 1` , typing `jj` in Insert Mode will return to Normal Mode.
 
 ### Disabled Keys
 
 For SM_Vim, the `VimDisableUnused` Configuration is set to 2 by default, these means a-z (+Shift), numbers and symbols have been disabled while not in insert mode. However, the following shortcuts have been enabled:
-a: Edit First Answer
-q: Edit First Question
+
+* a: Edit First Answer
+* q: Edit First Question
 
 e: Edit texts stays **disabled** by default. You can re-enable normal mode a functionality, and disable a and q SM functionality if preferred.
 
@@ -165,4 +167,5 @@ All commands are disabled
 |Tab + H| Open element in html editor (Ctrl + F9)|
 |Tab + L| Clear Search Highlights|
 |Tab + S| Split the article|
+
 Add your own scripts to `/bind/vim_sm_scripts.ahk` to allow them in any mode.

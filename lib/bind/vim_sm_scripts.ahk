@@ -40,6 +40,7 @@ SetPriority(Min, Max){
   Send, !p
   Random, rand, Min, Max
   Send, %rand%
+  Send, {Enter}
 }
 
 ; ---------------------

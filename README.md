@@ -77,7 +77,7 @@ If using a custom two-letter hotkey to enter the normal mode, the two letters mu
 |Key/Commands|Function|
 |:----------:|:-------|
 | ~~a~~| a has been disabled as it interferes with existing SM shortcut a: edit first answer.|
-|i/I/A/o/O | The remaining shortcuts should work as usual. Does nothing if text is not available. o/O only work when editing the elements in the element window.|
+|i/I/A/o/O | The remaining shortcuts should work as usual. Does nothing if text caret is not available. o/O only work when editing the elements in the element window.|
 |~~Ctrl-v~~| Visual block mode is disabled|
 |v/V|Enter the visual mode of Character-wise/Line-wise/Block-wise.|
 |~~:~~|Command line mode is disabled|
@@ -106,6 +106,7 @@ In addition, `Repeat` is also available for some commands.
 |100j| Down 100 lines|
 
 **Repeat does not work outside of the main element window!!**
+
 ### Yank/Cut(Delete)/Change/Paste
 
 |Key/Commands|Function|

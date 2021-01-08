@@ -35,6 +35,7 @@ For SM_Vim, the `VimDisableUnused` Configuration is set to 2 by default, these m
 
 * a: Edit First Answer
 * q: Edit First Question
+* 1-5 : Response Shortcuts
 
 e: Edit texts stays **disabled** by default. You can re-enable normal mode a functionality, and disable a and q SM functionality if preferred.
 

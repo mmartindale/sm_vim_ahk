@@ -1,4 +1,4 @@
-﻿#If WinActive("ahk_group " . Vim.GroupName) and (Vim.State.StrIsInCurrentVimMode("Vim_"))
+﻿#If WinActive("ahk_group " . Vim.GroupName . " ahk_class TElWind") and (Vim.State.StrIsInCurrentVimMode("Vim_")) and (A_CaretX != "") and (A_CaretY != "")
 1::
 2::
 3::

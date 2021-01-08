@@ -105,6 +105,7 @@ In addition, `Repeat` is also available for some commands.
 |3w| Move 3 words forward|
 |100j| Down 100 lines|
 
+**Repeat does not work outside of the main element window!!**
 ### Yank/Cut(Delete)/Change/Paste
 
 |Key/Commands|Function|

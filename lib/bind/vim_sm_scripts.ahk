@@ -40,6 +40,7 @@ SetPriority(Min, Max){
   Send, !p
   Random, rand, Min, Max
   Send, %rand%
+  Send, {Enter}
 }
 
 ; ---------------------
@@ -83,9 +84,12 @@ Tab & d::
   Send, {Enter}
 Return
 
-;window notes
+; window notes
+; from WinGetClass
 ; TBrowser - Browser
 ; TContents - Content Window (Knowledge Tree)
 ; TElWind - Element window
 ; TElDATAWind - Element Data window
 ; TSMMain - Toolbar
+; TStats - Statistics[general] window
+; TRegistryForm - Registry Window

@@ -39,3 +39,30 @@ Space::Send, {Right}
 
 ; period
 .::Send, +^{Right}{BS}^v
+
+;refocus element window
++r::
+  winactivate ahk_class telwind
+return
+
+; allow grading when element window is focused and not editing an element
+#IF WinActive("ahk_group " . Vim.GroupName . " ahk_class TElWind") and (A_CaretX ="") and (A_CaretY = "")
+1::
+  send, 1
+return
+
+2::
+  send, 2
+return
+
+3::
+  send, 3
+return
+
+4::
+  send, 4
+return
+
+5::
+  send, 5
+return

@@ -8,6 +8,7 @@ VimDisableUnused := "2"
 VimIconCheckInterval := "400"
 
 Vim := new VimAhk()
+Vim.State.SetNormal()
 Return
 
 #Include %A_LineFile%\..\lib\vim_ahk.ahk

@@ -15,6 +15,8 @@ See the readme of the original repo for additional installation and configuratio
 |Visual mode|Visual block mode has been disabled as it is not supported. Use visual mode to select text before making cloze, extract, etc|
 |Command mode|Disabled|
 
+The initial state is the Normal mode.
+
 SM_Vim tries to minimize the use of the mouse while staying true to a lot of vim navigation. The goal is not to recreate vim in SM but to allow for text selection and navigation, repetitions etc with the keyboard alone.
 
 Batch processing and folder operations etc will still need to be performed with mouse or traditional scripts. [MasterHowToLearn's fork](https://github.com/MasterHowToLearn/SuperMemoVim) was referenced but changes are a lot more minimal.
@@ -35,7 +37,7 @@ For SM_Vim, the `VimDisableUnused` Configuration is set to 2 by default, these m
 
 * a: Edit First Answer
 * q: Edit First Question
-* 1-5 : Response Shortcuts
+* 1-5 : Response Shortcuts (only when a not inside a text box and review window is active)
 
 e: Edit texts stays **disabled** by default. You can re-enable normal mode a functionality, and disable a and q SM functionality if preferred.
 
@@ -75,7 +77,7 @@ If using a custom two-letter hotkey to enter the normal mode, the two letters mu
 |Key/Commands|Function|
 |:----------:|:-------|
 | ~~a~~| a has been disabled as it interferes with existing SM shortcut a: edit first answer.|
-|i/I/A/o/O | The remaining shortcuts should work as usual. Behavior is undefined if the cursor is not showing. Working on a solution where no action is taken unless you are editing an element.|
+|i/I/A/o/O | The remaining shortcuts should work as usual. Does nothing if text is not available. o/O only work when editing the elements in the element window.|
 |~~Ctrl-v~~| Visual block mode is disabled|
 |v/V|Enter the visual mode of Character-wise/Line-wise/Block-wise.|
 |~~:~~|Command line mode is disabled|
@@ -125,7 +127,8 @@ y/d/c+Move Command can be used, too.
 |Key/Commands|Function|
 |:----------:|:-------|
 |u/Ctrl-r| Undo/Redo.|
-|~~R~~| R (replace multiple characters) has been disabled| 
+|~~R~~| R (replace multiple characters) has been disabled|
+|**R**| (R)efocus the element window. Use to return to element focus from the knowledge tree etc |
 |r| Replace one character|
 |J| Combine two lines.|
 |.| It is fixed to do: `Replace a following word with a clipboard` (useful to use with a search).|
@@ -134,8 +137,6 @@ y/d/c+Move Command can be used, too.
 |~~n/N~~| Search next/previous not supported for SM|
 |~~*~~| Disabled. You can perform Ctrl+F3 search on the selected text with Tab + S|
 |~~ZZ/ZQ~~|Like Command mode, this has been disabled|
-
-TODO *R* -- NEW -- (R)eturn from the Knowledge tree, focus on main window 
 
 ### Visual Mode
 

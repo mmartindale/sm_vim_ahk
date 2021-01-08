@@ -34,9 +34,10 @@ Return
 ;  Vim.State.SetMode("Vim_Normal")
 ;Return
 
-#If WinActive("ahk_group " . Vim.GroupName) and (Vim.State.Mode == "Vim_Normal")
+#If WinActive("ahk_group " . Vim.GroupName) and (Vim.State.Mode == "Vim_Normal") and (A_CaretX != "") and (A_CaretY != "")
 Space::Send, {Right}
 
+#If WinActive("ahk_group " . Vim.GroupName) and (Vim.State.Mode == "Vim_Normal")
 ; period
 .::Send, +^{Right}{BS}^v
 

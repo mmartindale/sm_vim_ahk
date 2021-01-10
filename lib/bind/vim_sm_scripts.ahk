@@ -84,6 +84,15 @@ Tab & d::
   Send, {Enter}
 Return
 
+;no matter where the cursor is it will go to learnbar then press Enter
+`::   
+ControlGetFocus, foc, ahk_class TElWind
+  if (foc = "Internet Explorer_Server1") or (foc = "Internet Explorer_Server2"){
+	  Send, {Esc}
+  }
+  Send, {Enter}
+Return
+
 ; window notes
 ; from WinGetClass
 ; TBrowser - Browser

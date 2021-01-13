@@ -171,5 +171,6 @@ All commands are disabled
 |Tab + H| Open element in html editor (Ctrl + F9)|
 |Tab + L| Clear Search Highlights|
 |Tab + S| Split the article|
+| \` | Press "Learn" or "Next repetition", regardless of focus|
 
 Add your own scripts to `/bind/vim_sm_scripts.ahk` to allow them in any mode.

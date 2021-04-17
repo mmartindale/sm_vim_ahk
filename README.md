@@ -167,10 +167,12 @@ All commands are disabled
 |Key/Commands|Function|
 |:----------:|:-------|
 |Tab + Q/W/E/R/T/Y | Assign priority to current element. Feel free to change ranges. Currently Q is urgent (0-5), WE applicable but less urgent (5-30), RTY used for interests and exploration (30-100)
-|Tab + D| Cut drills|
+|Tab + C| Cut drills|
 |Tab + H| Open element in html editor (Ctrl + F9)|
 |Tab + L| Clear Search Highlights|
 |Tab + S| Split the article|
 | \` | Press "Learn" or "Next repetition", regardless of focus|
+|Tab + 1| Apply the Template "Item" to current item/topic|
+|Tab + D| Done (Ctrl+Shift+Enter) and dismiss dialogues|
 
 Add your own scripts to `/bind/vim_sm_scripts.ahk` to allow them in any mode.

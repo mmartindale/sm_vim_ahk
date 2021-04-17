@@ -30,6 +30,17 @@ CutAndParseHtml(){
   Clipboard := bak
 }
 
+; ApplyTemplate
+; Description: Apply the Template "Name" to current item/topic
+; Parameters
+;   Name: string. Name of the template to switch to. Expects an existing name.
+;
+ApplyTemplate(Name){
+  Send, ^+m
+  Send, %Name% 
+  Send, {Enter}
+}
+
 ; SetPriority
 ; Description: Opens the priority window and sets priority percentage to a number between Min and Max
 ; Parameters
@@ -77,7 +88,7 @@ Tab & h::
 Return
 
 ;Cut drills
-Tab & d::
+Tab & c::
   Send, {Alt}
   Send, l
   Send, c
@@ -90,6 +101,24 @@ ControlGetFocus, foc, ahk_class TElWind
   if (foc = "Internet Explorer_Server1") or (foc = "Internet Explorer_Server2"){
 	  Send, {Esc}
   }
+  Send, {Enter}
+Return
+
+;Apply "item" template
+Tab & 1::ApplyTemplate("Item")
+
+;Done and dismiss warnings
+Tab & d::
+  Send, ^+{Enter}
+  Send, {Enter}
+  Send, {Enter}
+ Return
+
+;Filter, advertising, remove tables, font, comments, buttons, scripts, frames 
+Tab & f::
+  Send, {F6}
+  Send, r
+  Send, f
   Send, {Enter}
 Return
 
